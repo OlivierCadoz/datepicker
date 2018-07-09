@@ -1,0 +1,26 @@
+<header class="datepicker-header">
+  <nav class="datepicker-nav">
+      <ul class="datepicker-nav-list">
+        <li class="datepicker-nav-item">
+          <button class="previous-btn" type="button" name="previous">
+            <span><</span>
+          </button>
+        </li>
+        <li class="datepicker-nav-item">
+          <button type="button" name="month" (click)="selectAction('month')">
+            {{ month }}
+          </button>
+        </li>
+        <li class="datepicker-nav-item">
+          <button type="button" name="year" (click)="selectAction('year')">
+            {{ year }}
+          </button>
+        </li>
+        <li class="datepicker-nav-item">
+          <button class="next-btn" type="button" name="next">
+            <span>></span>
+          </button>
+        </li>
+      </ul>
+  </nav>
+</header>

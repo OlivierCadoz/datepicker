@@ -1,0 +1,11 @@
+<div class="datepicker-body" [ngSwitch]="element">
+  <div *ngSwitchCase="'date'">
+    Tableau des dates
+  </div>
+  <div *ngSwitchCase="'month'">
+    <month-list></month-list>
+  </div>
+  <div *ngSwitchCase="'year'">
+    Liste des années
+  </div>
+</div>
