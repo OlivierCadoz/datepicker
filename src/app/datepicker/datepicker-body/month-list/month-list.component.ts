@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { DatepickerService } from "../../datepicker.service";
 
 @Component({
@@ -8,9 +8,8 @@ import { DatepickerService } from "../../datepicker.service";
 })
 export class MonthListComponent implements OnInit {
 
-  @Output() public monthSelected = new EventEmitter();
-
   public months: string[];
+  public monthActive: string;
 
   private date: Date;
 
@@ -18,18 +17,22 @@ export class MonthListComponent implements OnInit {
     private readonly datepickerService: DatepickerService
   ) {
     this.months = [
-      "janvier", "février", "Mars", "Avril", "Mai", "Juin", "Juillet",
+      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet",
       "Août", "Septembre", "Octobre", "Novembre", "Décembre"
     ]
   }
 
   ngOnInit() {
-    this.datepickerService.date.subscribe(date => this.date = date);
+    this.datepickerService.date.subscribe(date => {
+      this.date = date;
+      this.monthActive = this.months[date.getMonth()];
+    });
   }
 
   selectMonth(index) {
     this.date.setMonth(index);
-    this.monthSelected.emit(this.date);
+    this.datepickerService.date.next(this.date);
+    this.datepickerService.headerAction.next("date");
   }
 
 }

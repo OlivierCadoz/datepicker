@@ -2,7 +2,7 @@
   <nav class="datepicker-nav">
       <ul class="datepicker-nav-list">
         <li class="datepicker-nav-item">
-          <button class="previous-btn" type="button" name="previous">
+          <button class="previous-btn" type="button" name="previous" (click)="action !== 'year' ? changeMonth(-1) : changeYear(-1)">
             <span><</span>
           </button>
         </li>
@@ -17,7 +17,7 @@
           </button>
         </li>
         <li class="datepicker-nav-item">
-          <button class="next-btn" type="button" name="next">
+          <button class="next-btn" type="button" name="next" (click)="action !== 'year' ? changeMonth(1) : changeYear(1)">
             <span>></span>
           </button>
         </li>

@@ -1,3 +1,9 @@
-<p>
-  year-list works!
-</p>
+<div class="year-list-container">
+  <ul class="year-list">
+    <li class="year-item" *ngFor="let year of years; let index = index">
+      <button type="button" name="button" (click)="selectYear(year)" [ngClass]="{'active': year === yearActive}">
+        {{ year }}
+      </button>
+    </li>
+  </ul>
+</div>

@@ -1,7 +1,16 @@
-<ul>
-  <li *ngFor="let month of months; let index = index">
-    <button type="button" name="button" (click)="selectMonth">
-      {{ month }}
-    </button>
-  </li>
-</ul>
+<div class="month-list-container">
+  <ul class="month-list">
+    <li class="month-item" *ngFor="let month of months | slice:0:6; let index = index">
+      <button type="button" name="button" (click)="selectMonth(index)" [ngClass]="{'active': month === monthActive}">
+        {{ month }}
+      </button>
+    </li>
+  </ul>
+  <ul class="month-list">
+    <li class="month-item" *ngFor="let month of months | slice:6; let index = index">
+      <button type="button" name="button" (click)="selectMonth(6 + index)" [ngClass]="{'active': month === monthActive}">
+        {{ month }}
+      </button>
+    </li>
+  </ul>
+</div>

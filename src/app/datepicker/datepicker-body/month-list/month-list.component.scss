@@ -1,0 +1,36 @@
+.month-list-container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.month-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.month-item {
+  margin: 7px 0;
+
+  button {
+    border: none;
+    background-color: transparent;
+    transition: ease-in-out .2s;
+    border-radius: 100px / 100px;
+    padding: 5px 13px;
+    font-size: 16px;
+    color: white;
+
+    &:hover {
+      background-color: rgba(#00796B, .7);
+    }
+
+    &.active {
+      background-color: #00796B;
+    }
+  }
+}
