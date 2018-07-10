@@ -30,6 +30,8 @@ export class DatepickerHeaderComponent implements OnInit {
       this.month = this.months[date.getMonth()];
       this.year = date.getFullYear();
     });
+
+    this.datepickerService.headerAction.subscribe(action => this.action = action);
   }
 
   /**
@@ -37,7 +39,6 @@ export class DatepickerHeaderComponent implements OnInit {
    * @param {string} action
    */
   selectAction(action: string): void {
-    this.action = action;
     this.datepickerService.headerAction.next(action);
   }
 

@@ -1,3 +1,65 @@
-<p>
-  date-table works!
-</p>
+<div class="datepicker-table">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let dayName of daysName">{{ dayName }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let day of days | slice:0:7">
+          <button type="button" name="dayNumber"
+            [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
+            [disabled]="day.disabled" (click)="selectDate(day.id)">
+            {{ day.id }}
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let day of days | slice:7:14">
+          <button type="button" name="dayNumber"
+            [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
+            [disabled]="day.disabled" (click)="selectDate(day.id)">
+            {{ day.id }}
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let day of days | slice:14:21">
+          <button type="button" name="dayNumber"
+            [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
+            [disabled]="day.disabled" (click)="selectDate(day.id)">
+            {{ day.id }}
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let day of days | slice:21:28">
+          <button type="button" name="dayNumber"
+            [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
+            [disabled]="day.disabled" (click)="selectDate(day.id)">
+            {{ day.id }}
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let day of days | slice:28:35">
+          <button type="button" name="dayNumber"
+            [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
+            [disabled]="day.disabled" (click)="selectDate(day.id)">
+            {{ day.id }}
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let day of days | slice:35:42">
+          <button type="button" name="dayNumber"
+            [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
+            [disabled]="day.disabled" (click)="selectDate(day.id)">
+            {{ day.id }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
