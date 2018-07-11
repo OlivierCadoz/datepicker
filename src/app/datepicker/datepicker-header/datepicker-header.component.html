@@ -6,7 +6,7 @@
             <span><</span>
           </button>
         </li>
-        <li class="datepicker-nav-item">
+        <li *ngIf="this.action !=='year'" class="datepicker-nav-item">
           <button type="button" name="month" (click)="selectAction('month')">
             {{ month }}
           </button>

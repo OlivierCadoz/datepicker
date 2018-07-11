@@ -1,6 +1,8 @@
 .year-list-container {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .year-list {
@@ -14,22 +16,42 @@
 
 .year-item {
   margin: 7px 0;
+}
 
-  button {
-    border: none;
-    background-color: transparent;
-    transition: ease-in-out .2s;
-    border-radius: 100px / 100px;
-    padding: 5px 13px;
-    font-size: 16px;
-    color: white;
+.btn-year-item {
+  border: none;
+  background-color: transparent;
+  transition: ease-in-out .2s;
+  border-radius: 100px / 100px;
+  padding: 5px 13px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
 
-    &:hover {
-      background-color: rgba(#00796B, .7);
-    }
-
-    &.active {
-      background-color: #00796B;
-    }
+  &:hover {
+    background-color: rgba(#00796B, .7);
   }
+
+  &.active {
+    background-color: #00796B;
+  }
+}
+
+.pos-abs {
+  position: absolute;
+  top: 0;
+}
+
+.left {
+  left: -13px;
+}
+
+.right {
+  right: -13px;
+}
+
+.btn-year-range {
+  @extend .btn-year-item;
+  padding: 5px;
+  height: 100%;
 }
