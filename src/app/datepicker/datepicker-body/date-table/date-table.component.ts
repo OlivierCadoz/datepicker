@@ -24,10 +24,8 @@ export class DateTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.lastDate.getDate());
     this.datepickerService.date.subscribe(date => {
       this.date = date;
-      console.log(this.date.getDate());
       this.initDates();
       this.initWeeks();
     });
@@ -39,14 +37,22 @@ export class DateTableComponent implements OnInit {
   initDates() {
     this.days = [];
     this.dayActive = this.date.getDate();
+    console.log("Date:", this.date);
     const month = this.date.getMonth();
+    console.log("month", month);
     const prevMthYear = month === 0 ? this.date.getFullYear() - 1 : this.date.getFullYear();
+    console.log("prevMthYear:", prevMthYear);
     const nextMthYear = month === 11 ? this.date.getFullYear() + 1 : this.date.getFullYear();
-    const prevMthDays = new Date(prevMthYear, month, 0).getDate();
+    console.log("nextMthYear:", nextMthYear);
+    const prevMthDays = new Date(this.date.getFullYear(), month, 0).getDate();
+    console.log("prevMthDays:", prevMthDays);
     const mthDays = new Date(nextMthYear, month + 1, 0).getDate();
-    const dayOne = new Date(prevMthYear, month, 1).getDay();
+    console.log("mthDays:", mthDays);
+    let dayOne = new Date(this.date.getFullYear(), month, 1).getDay();
+    dayOne = dayOne === 0 ? 6 : dayOne - 1;
+    console.log("Day one:", dayOne);
 
-    for (let i = dayOne; i >= 0; i--) this.days.push({id: prevMthDays - i, disabled: true});
+    for (let i = dayOne; i > 0; i--) this.days.push({id: prevMthDays - i, disabled: true});
     for (let i = 1; i <= mthDays; i++) this.days.push({id: i, disabled: false});
 
     if (this.days.length % 7 !== 0) {
