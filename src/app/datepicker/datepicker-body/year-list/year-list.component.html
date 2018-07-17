@@ -1,11 +1,11 @@
 <div class="year-list-container">
-  <button class="btn-year-range pos-abs left" type="button" name="button" (click)="initYearsFromEnd(this.years[0] - 1)">-</button>
   <ul class="year-list">
     <li class="year-item" *ngFor="let year of years; let index = index">
-      <button class="btn-year-item" type="button" name="button" (click)="selectYear(year)" [ngClass]="{'active': year === yearActive}">
+      <button class="btn-year-item" type="button" name="button"
+        [ngClass]="{'active': year === yearActive}"
+        (click)="selectYear(year)">
         {{ year }}
       </button>
     </li>
   </ul>
-  <button class="btn-year-range pos-abs right" type="button" name="button" (click)="initYearsFromStart(this.years[this.years.length - 1] + 1)">+</button>
 </div>

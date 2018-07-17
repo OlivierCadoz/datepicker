@@ -2,11 +2,13 @@
   <table>
     <thead>
       <tr>
+        <th></th>
         <th *ngFor="let dayName of daysName">{{ dayName }}</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td>{{ weeks[0] }}</td>
         <td *ngFor="let day of days | slice:0:7">
           <button type="button" name="dayNumber"
             [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
@@ -16,6 +18,7 @@
         </td>
       </tr>
       <tr>
+        <td>{{ weeks[1] }}</td>
         <td *ngFor="let day of days | slice:7:14">
           <button type="button" name="dayNumber"
             [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
@@ -25,6 +28,7 @@
         </td>
       </tr>
       <tr>
+        <td>{{ weeks[2] }}</td>
         <td *ngFor="let day of days | slice:14:21">
           <button type="button" name="dayNumber"
             [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
@@ -34,6 +38,7 @@
         </td>
       </tr>
       <tr>
+        <td>{{ weeks[3] }}</td>
         <td *ngFor="let day of days | slice:21:28">
           <button type="button" name="dayNumber"
             [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
@@ -43,6 +48,7 @@
         </td>
       </tr>
       <tr>
+        <td>{{ weeks[4] }}</td>
         <td *ngFor="let day of days | slice:28:35">
           <button type="button" name="dayNumber"
             [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
@@ -51,7 +57,8 @@
           </button>
         </td>
       </tr>
-      <tr>
+      <tr *ngIf="days.length > 36">
+        <td>{{ weeks[5] }}</td>
         <td *ngFor="let day of days | slice:35:42">
           <button type="button" name="dayNumber"
             [ngClass]="{'active': dayActive === day.id, 'disabled': day.disabled}"
