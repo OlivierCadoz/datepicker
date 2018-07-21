@@ -1,7 +1,7 @@
 .datepicker-table {
   font-size: 16px;
   font-family: sans-serif;
-  color: white;
+  color: #4b4b4b;
 
   table {
     width: 100%;
@@ -16,8 +16,8 @@
     border: none;
     background-color: transparent;
     font-size: 14px;
-    font-weight: 200;
-    color: white;
+    font-weight: 600;
+    color: #4b4b4b;
     height: 30px;
     width: 30px;
     border-radius: 50%;
@@ -27,15 +27,22 @@
     transition: ease-in-out .2s;
 
     &.disabled {
-      color: darken(white, 20%);
+      color: #8d8d8d;
     }
 
     &:not(.disabled):hover {
-      background-color: rgba(#00796B, .7);
+      color: #fefefe;
+      background-color: #0296c3;
+      cursor: pointer;
     }
 
     &:not(.disabled).active {
-      background-color: #00796B;
+      color: #fefefe;
+      background-color: #004e66;
     }
   }
+}
+
+.week-numbers {
+  color: #0296c3;
 }

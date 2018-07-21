@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, Input, ChangeDetectorRef } from "@angular/core";
 import { DatepickerService } from "../datepicker.service";
 
 @Component({
@@ -53,9 +53,7 @@ export class DatepickerHeaderComponent implements OnInit {
    * @param {number} number
    */
   changeMonth(number: number): void {
-    const newMonth = this.date.getMonth() + number;
-    this.date.setMonth(newMonth);
-    this.datepickerService.setNewDate(this.date);
+    this.datepickerService.changeMonth(this.date, number);
   }
 
   /**
@@ -63,10 +61,13 @@ export class DatepickerHeaderComponent implements OnInit {
    * @param {boolean} bool
    */
   changeYear(bool: boolean): void {
-    if (!bool) this.datepickerService.initYearsFromEnd(this.years[0] - 1);
-    else this.datepickerService.initYearsFromStart(this.years[this.years.length - 1] + 1);
+    this.datepickerService.changeYear(this.years, bool);
   }
 
+  /**
+   * Initialise le titre des années:
+   * @param {number[]} years
+   */
   initYear(years: number[]): void {
     this.years = years;
     this.yearRange = `${years[0]} - ${years[years.length - 1]}`;

@@ -29,10 +29,12 @@ export class MonthListComponent implements OnInit {
     });
   }
 
-  selectMonth(index) {
-    this.date.setMonth(index);
-    this.datepickerService.date.next(this.date);
-    this.datepickerService.headerAction.next("date");
+  /**
+   * Sélectionne le mois:
+   * @param {number} index
+   */
+  selectMonth(index: number): void {
+    this.datepickerService.selectMonth(this.date, index);
   }
 
 }

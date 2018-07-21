@@ -15,12 +15,13 @@ export class DateTableComponent implements OnInit {
 
   private date: Date;
   private lastDate = new Date();
+  private dayOne: number;
 
   constructor(
     private readonly datepickerService: DatepickerService,
     private readonly cdr: ChangeDetectorRef
   ) {
-    this.daysName = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
+    this.daysName = ["lu", "ma", "me", "je", "ve", "sa", "di"];
   }
 
   ngOnInit() {
@@ -34,25 +35,18 @@ export class DateTableComponent implements OnInit {
   /**
    * Initialise le tableau des dates
    */
-  initDates() {
+  initDates(): void {
     this.days = [];
     this.dayActive = this.date.getDate();
-    console.log("Date:", this.date);
     const month = this.date.getMonth();
-    console.log("month", month);
     const prevMthYear = month === 0 ? this.date.getFullYear() - 1 : this.date.getFullYear();
-    console.log("prevMthYear:", prevMthYear);
     const nextMthYear = month === 11 ? this.date.getFullYear() + 1 : this.date.getFullYear();
-    console.log("nextMthYear:", nextMthYear);
     const prevMthDays = new Date(this.date.getFullYear(), month, 0).getDate();
-    console.log("prevMthDays:", prevMthDays);
     const mthDays = new Date(nextMthYear, month + 1, 0).getDate();
-    console.log("mthDays:", mthDays);
     let dayOne = new Date(this.date.getFullYear(), month, 1).getDay();
-    dayOne = dayOne === 0 ? 6 : dayOne - 1;
-    console.log("Day one:", dayOne);
+    this.dayOne = dayOne === 0 ? 6 : dayOne - 1;
 
-    for (let i = dayOne; i > 0; i--) this.days.push({id: prevMthDays - i, disabled: true});
+    for (let i = this.dayOne; i > 0; i--) this.days.push({id: prevMthDays - i, disabled: true});
     for (let i = 1; i <= mthDays; i++) this.days.push({id: i, disabled: false});
 
     if (this.days.length % 7 !== 0) {
@@ -63,36 +57,16 @@ export class DateTableComponent implements OnInit {
   /**
    * Initialise les numéros des semaines
    */
-  initWeeks() {
-    this.weeks = [];
-     const actualWeek = this.date.getWeekNumber();
-     let minus: number;
-     if (this.days.length < 36) minus = Math.floor(this.dayActive % 5);
-     else minus = Math.floor(this.dayActive % 6);
-     for (let i = actualWeek - minus; i <= actualWeek + 2; i++) this.weeks.push(i);
-     this.cdr.markForCheck();
-     console.log(this.weeks);
+  initWeeks(): void {
+    this.weeks = this.datepickerService.initWeeks(this.date, this.dayActive, this.dayOne);
+    this.cdr.markForCheck();
   }
 
   /**
    * Sélectionne une nouvelle date
    * @param {number} day
    */
-  selectDate(day) {
-    const newDate = new Date(this.date.getFullYear(), this.date.getMonth(), day);
-    this.datepickerService.setNewDate(newDate);
-  }
-
-
-}
-
-declare global {
-  interface Date {
-    getWeekNumber(): number;
+  selectDate(day: number): void {
+    this.datepickerService.selectDate(this.date, day);
   }
 }
-
-Date.prototype.getWeekNumber = function () {
-  var onejan = new Date(this.getFullYear(), 0, 1);
-    return Math.ceil((((this - Number(onejan)) / 86400000) + onejan.getDay() + 1) / 7);
-};

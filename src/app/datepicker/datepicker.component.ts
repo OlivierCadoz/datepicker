@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatepickerService } from "./datepicker.service";
 
 @Component({
@@ -10,6 +10,8 @@ export class DatepickerComponent implements OnInit {
 
   @Input() public dateString: string;
 
+  @Output() public newDate = new EventEmitter();
+
   public date: Date;
 
   private today: Date = new Date();
@@ -19,12 +21,19 @@ export class DatepickerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.datepickerService.date.next(this.today);
+    this.setInitialDate();
 
     this.datepickerService.date.subscribe(date => {
       this.date = date;
-      console.log("Date:", date);
+      if (this.datepickerService.getHeaderActionValue() === "date") this.newDate.emit(date);
     });
+  }
+
+  /**
+   * Initialise la première date:
+   */
+  setInitialDate(): void {
+    this.datepickerService.setInitialDate(this.dateString, this.today);
   }
 
 }

@@ -1,10 +1,13 @@
 .month-list-container {
+  height: 100%;
   display: flex;
   justify-content: center;
 }
 
 .month-list {
+  flex-grow: 1;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   padding: 0;
@@ -22,14 +25,17 @@
     border-radius: 100px / 100px;
     padding: 5px 13px;
     font-size: 16px;
-    color: white;
+    color: #4b4b4b;
+    cursor: pointer;
 
     &:hover {
-      background-color: rgba(#00796B, .7);
+      color: #fefefe;
+      background-color: #0296c3;
     }
 
     &.active {
-      background-color: #00796B;
+      color: #fefefe;
+      background-color: #004e66;
     }
   }
 }

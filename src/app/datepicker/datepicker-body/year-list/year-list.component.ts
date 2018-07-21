@@ -34,7 +34,7 @@ export class YearListComponent implements OnInit {
    * Initialise la liste des années en prenant l'année en paramètre comme point de départ:
    * @param {number} year
    */
-  initYearsFromStart(year): void {
+  initYearsFromStart(year: number): void {
     this.datepickerService.initYearsFromStart(year);
   }
 
@@ -42,7 +42,7 @@ export class YearListComponent implements OnInit {
    * Initialise la liste des années en prenant l'année en paramètre comme point d'arrivée:
    * @param {number} year
    */
-  initYearsFromEnd(year): void {
+  initYearsFromEnd(year: number): void {
     this.datepickerService.initYearsFromEnd(year);
   }
 
@@ -50,7 +50,7 @@ export class YearListComponent implements OnInit {
    * Actualise la date après avoir sélectionné une année:
    * @param {number} newYear
    */
-  selectYear(newYear): void {
+  selectYear(newYear: number): void {
     this.datepickerService.selectYear(this.date, newYear);
   }
 }

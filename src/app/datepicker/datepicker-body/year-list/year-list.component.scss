@@ -1,11 +1,13 @@
 .year-list-container {
   position: relative;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .year-list {
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -15,6 +17,7 @@
 }
 
 .year-item {
+  flex: 1;
   margin: 7px 0;
 }
 
@@ -23,17 +26,20 @@
   background-color: transparent;
   transition: ease-in-out .2s;
   border-radius: 100px / 100px;
+  margin: 0 7px;
   padding: 5px 13px;
   font-size: 16px;
-  color: white;
+  color: #4b4b4b;
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(#00796B, .7);
+    color: #fefefe;
+    background-color: #0296c3;
   }
 
   &.active {
-    background-color: #00796B;
+    color: #fefefe;
+    background-color: #004e66;
   }
 }
 

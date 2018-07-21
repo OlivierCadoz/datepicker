@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DatepickerService } from "../datepicker.service";
 import { Subscription } from "rxjs";
 
@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
   templateUrl: './datepicker-body.component.html',
   styleUrls: ['./datepicker-body.component.scss']
 })
-export class DatepickerBodyComponent implements OnInit, OnDestroy {
+export class DatepickerBodyComponent implements OnInit {
 
   public element: string;
 
@@ -19,15 +19,15 @@ export class DatepickerBodyComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.actionSub = this.datepickerService.headerAction.subscribe(action => this.actionHandling(action));
+    this.datepickerService.headerAction.subscribe(action => this.actionHandling(action));
     this.element = "date";
     this.cdr.markForCheck();
   }
 
-  ngOnDestroy() {
-    this.actionSub.unsubscribe();
-  }
-
+  /**
+   * Change la vue du body entre les vues 'date', 'month', 'year':
+   * @param {string} action
+   */
   actionHandling(action: string): void {
     this.element = action;
   }
