@@ -12,6 +12,9 @@ export class YearListComponent implements OnInit {
   public yearActive: number;
 
   private date: Date;
+  private firstInit = true;
+  private fromStart = false;
+  private fromEnd = false;
 
   constructor(
     private readonly datepickerService: DatepickerService,
@@ -21,6 +24,7 @@ export class YearListComponent implements OnInit {
   ngOnInit() {
     this.datepickerService.date.subscribe(date => {
       this.date = date;
+      if (!this.firstInit) this.initFromBooleans(date);
       this.yearActive = date.getFullYear();
     });
 
@@ -52,5 +56,17 @@ export class YearListComponent implements OnInit {
    */
   selectYear(newYear: number): void {
     this.datepickerService.selectYear(this.date, newYear);
+  }
+
+  initFromBooleans(date) {
+    const compareYear = date.getFullYear() > this.yearActive;
+    if (!this.fromStart && compareYear) {
+      this.fromStart = true;
+      this.fromEnd = false;
+    }
+    else if (!this.fromEnd && !compareYear) {
+      this.fromStart = false;
+      this.fromEnd = true;
+    }
   }
 }
