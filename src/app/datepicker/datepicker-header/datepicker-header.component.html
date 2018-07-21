@@ -2,23 +2,23 @@
   <nav class="datepicker-nav">
       <ul class="datepicker-nav-list">
         <li class="datepicker-nav-item">
-          <button class="previous-btn" type="button" name="previous" (click)="action !== 'year' ? changeMonth(-1) : changeYear(false)">
+          <button class="previous-next-btn" type="button" name="previous" (click)="action !== 'year' ? changeMonth(-1) : changeYear(false)">
             <span><</span>
           </button>
         </li>
         <li *ngIf="this.action !=='year'" class="datepicker-nav-item">
-          <button type="button" name="month" (click)="selectAction('month')">
+          <button class="month-year-btn" type="button" name="month" (click)="selectAction('month')">
             {{ month }}
           </button>
         </li>
         <li *ngIf="this.action !=='month'" class="datepicker-nav-item">
-          <button type="button" name="year" (click)="selectAction('year')">
+          <button class="month-year-btn" type="button" name="year" (click)="selectAction('year')">
             <span *ngIf="this.action !== 'year'">{{ year }}</span>
             <span *ngIf="this.action === 'year'">{{ yearRange }}</span>
           </button>
         </li>
         <li class="datepicker-nav-item">
-          <button class="next-btn" type="button" name="next" (click)="action !== 'year' ? changeMonth(1) : changeYear(true)">
+          <button class="previous-next-btn" type="button" name="next" (click)="action !== 'year' ? changeMonth(1) : changeYear(true)">
             <span>></span>
           </button>
         </li>
